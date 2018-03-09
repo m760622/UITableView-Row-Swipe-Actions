@@ -13,6 +13,8 @@
 		D477DA8120534E7300F528CD /* UITableView_Row_Swipe_Actions.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D477DA7F20534E7300F528CD /* UITableView_Row_Swipe_Actions.xcdatamodeld */; };
 		D477DA8320534E7300F528CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D477DA8220534E7300F528CD /* Assets.xcassets */; };
 		D477DA8620534E7300F528CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D477DA8420534E7300F528CD /* LaunchScreen.storyboard */; };
+		D477DA922053528700F528CD /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D477DA912053528700F528CD /* CustomCell.swift */; };
+		D477DA942053541F00F528CD /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = D477DA932053541F00F528CD /* Global.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		D477DA8220534E7300F528CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D477DA8520534E7300F528CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D477DA8720534E7300F528CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D477DA912053528700F528CD /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		D477DA932053541F00F528CD /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,8 @@
 		D477DA9020534F4B00F528CD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D477DA912053528700F528CD /* CustomCell.swift */,
+				D477DA932053541F00F528CD /* Global.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -173,6 +179,8 @@
 			files = (
 				D477DA8120534E7300F528CD /* UITableView_Row_Swipe_Actions.xcdatamodeld in Sources */,
 				D477DA7B20534E7300F528CD /* Main_VC.swift in Sources */,
+				D477DA922053528700F528CD /* CustomCell.swift in Sources */,
+				D477DA942053541F00F528CD /* Global.swift in Sources */,
 				D477DA7920534E7300F528CD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
