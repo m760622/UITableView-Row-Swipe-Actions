@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D477DA7920534E7300F528CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D477DA7820534E7300F528CD /* AppDelegate.swift */; };
-		D477DA7B20534E7300F528CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D477DA7A20534E7300F528CD /* ViewController.swift */; };
+		D477DA7B20534E7300F528CD /* Main_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D477DA7A20534E7300F528CD /* Main_VC.swift */; };
 		D477DA7E20534E7300F528CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D477DA7C20534E7300F528CD /* Main.storyboard */; };
 		D477DA8120534E7300F528CD /* UITableView_Row_Swipe_Actions.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D477DA7F20534E7300F528CD /* UITableView_Row_Swipe_Actions.xcdatamodeld */; };
 		D477DA8320534E7300F528CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D477DA8220534E7300F528CD /* Assets.xcassets */; };
@@ -18,7 +18,7 @@
 /* Begin PBXFileReference section */
 		D477DA7520534E7300F528CD /* UITableView Row Swipe Actions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UITableView Row Swipe Actions.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D477DA7820534E7300F528CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D477DA7A20534E7300F528CD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D477DA7A20534E7300F528CD /* Main_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_VC.swift; sourceTree = "<group>"; };
 		D477DA7D20534E7300F528CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D477DA8020534E7300F528CD /* UITableView_Row_Swipe_Actions.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UITableView_Row_Swipe_Actions.xcdatamodel; sourceTree = "<group>"; };
 		D477DA8220534E7300F528CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,15 +56,47 @@
 		D477DA7720534E7300F528CD /* UITableView Row Swipe Actions */ = {
 			isa = PBXGroup;
 			children = (
+				D477DA9020534F4B00F528CD /* Model */,
+				D477DA8F20534F4900F528CD /* View */,
+				D477DA8E20534F4700F528CD /* Controller */,
+				D477DA8D20534F4600F528CD /* Resources */,
 				D477DA7820534E7300F528CD /* AppDelegate.swift */,
-				D477DA7A20534E7300F528CD /* ViewController.swift */,
 				D477DA7C20534E7300F528CD /* Main.storyboard */,
-				D477DA8220534E7300F528CD /* Assets.xcassets */,
 				D477DA8420534E7300F528CD /* LaunchScreen.storyboard */,
-				D477DA8720534E7300F528CD /* Info.plist */,
 				D477DA7F20534E7300F528CD /* UITableView_Row_Swipe_Actions.xcdatamodeld */,
 			);
 			path = "UITableView Row Swipe Actions";
+			sourceTree = "<group>";
+		};
+		D477DA8D20534F4600F528CD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D477DA8220534E7300F528CD /* Assets.xcassets */,
+				D477DA8720534E7300F528CD /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D477DA8E20534F4700F528CD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D477DA7A20534E7300F528CD /* Main_VC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D477DA8F20534F4900F528CD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D477DA9020534F4B00F528CD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,7 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D477DA8120534E7300F528CD /* UITableView_Row_Swipe_Actions.xcdatamodeld in Sources */,
-				D477DA7B20534E7300F528CD /* ViewController.swift in Sources */,
+				D477DA7B20534E7300F528CD /* Main_VC.swift in Sources */,
 				D477DA7920534E7300F528CD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,12 +312,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7NM5JA8Q5L;
-				INFOPLIST_FILE = "UITableView Row Swipe Actions/Info.plist";
+				INFOPLIST_FILE = "UITableView Row Swipe Actions/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yusif-the-ios-developer.UITableView-Row-Swipe-Actions";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -295,12 +327,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7NM5JA8Q5L;
-				INFOPLIST_FILE = "UITableView Row Swipe Actions/Info.plist";
+				INFOPLIST_FILE = "UITableView Row Swipe Actions/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yusif-the-ios-developer.UITableView-Row-Swipe-Actions";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
