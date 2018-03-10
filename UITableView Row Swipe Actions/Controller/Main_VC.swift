@@ -16,6 +16,8 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
         self.table_view.delegate = self
         self.table_view.dataSource = self
         
+        generate_data(number: 50)
+        
         attempt_fetch()
     }
     
@@ -134,5 +136,33 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
     
     @IBAction func refresh_button_pressed(_ sender: Any) {
         self.table_view.reloadData()
+    }
+    
+    func generate_data(number: Int) {
+        resetAllRecords(in: "Item")
+        for i in 1...number{
+            let item = Item(context: context)
+            if i<10{
+                item.item_name = "Item_Number_0\(i)"
+            }else{
+                item.item_name = "Item_Number_\(i)"
+            }
+            app_delegate.saveContext()
+        }
+    }
+    
+    func resetAllRecords(in entity : String) {
+        let context = ( UIApplication.shared.delegate as! AppDelegate ).persistentContainer.viewContext
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        do
+        {
+            try context.execute(deleteRequest)
+            try context.save()
+        }
+        catch
+        {
+            print ("There was an error")
+        }
     }
 }

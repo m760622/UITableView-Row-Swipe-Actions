@@ -28,7 +28,24 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="crc-Gl-IZm" id="81W-O9-dDy">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item_Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyq-N8-6VB">
+                                                    <rect key="frame" x="12.5" y="0.0" width="350" height="50"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fyq-N8-6VB" firstAttribute="centerX" secondItem="81W-O9-dDy" secondAttribute="centerX" id="BJX-3O-2EI"/>
+                                                <constraint firstItem="fyq-N8-6VB" firstAttribute="height" secondItem="81W-O9-dDy" secondAttribute="height" id="FjT-wt-pt6"/>
+                                                <constraint firstItem="fyq-N8-6VB" firstAttribute="width" secondItem="81W-O9-dDy" secondAttribute="width" constant="-25" id="Qmk-fQ-Ycd"/>
+                                                <constraint firstItem="fyq-N8-6VB" firstAttribute="centerY" secondItem="81W-O9-dDy" secondAttribute="centerY" id="np9-Bh-X6U"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="item_name" destination="fyq-N8-6VB" id="rOi-Kn-awI"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
