@@ -16,7 +16,7 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
         self.table_view.delegate = self
         self.table_view.dataSource = self
         
-        generate_data(number: 50)
+        generate_data(number: 20)
         
         attempt_fetch()
     }
@@ -143,6 +143,8 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
         for i in 1...number{
             let item = Item(context: context)
             if i<10{
+                item.item_name = "Item_Number_00\(i)"
+            }else if i<100{
                 item.item_name = "Item_Number_0\(i)"
             }else{
                 item.item_name = "Item_Number_\(i)"
