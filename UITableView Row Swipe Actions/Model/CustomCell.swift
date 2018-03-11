@@ -11,8 +11,10 @@ class CustomCell: UITableViewCell {
     func configureCell(_ item: Item){
         item_name.text = item.item_name
         if item.is_favorite == true {
+            star_image.isHidden = false
             star_image.image = #imageLiteral(resourceName: "fav")
         } else {
+            star_image.isHidden = true
             star_image.image = #imageLiteral(resourceName: "not-fav")
         }
     }

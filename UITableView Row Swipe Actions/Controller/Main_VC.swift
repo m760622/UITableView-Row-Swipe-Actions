@@ -9,6 +9,7 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
     @IBOutlet weak var table_view: UITableView!
     
     var controller: NSFetchedResultsController<Item>!
+    var number_of_items: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +17,9 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
         self.table_view.delegate = self
         self.table_view.dataSource = self
         
-        generate_data(number: 5)
+        number_of_items = 10
+        
+        generate_data(number: number_of_items)
         
         attempt_fetch()
     }
@@ -53,7 +56,6 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let favorite = UIContextualAction(style: .normal, title: "Favorite") { (action, view, nil) in
-            print("Favorite")
             if let objects = self.controller.fetchedObjects, objects.count > 0 {
                 let item = objects[indexPath.row]
                 if item.is_favorite == false {
@@ -66,7 +68,7 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
         }
         favorite.backgroundColor = UIColor(red:0.95, green:0.65, blue:0.21, alpha:1.00)
         let config =  UISwipeActionsConfiguration(actions: [favorite])
-        config.performsFirstActionWithFullSwipe = false
+//        config.performsFirstActionWithFullSwipe = false
         return config
     }
     
@@ -88,14 +90,12 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
             if let objects = self.controller.fetchedObjects, objects.count > 0 {
                 let item = objects[indexPath.row]
                 context.delete(item)
                 app_delegate.saveContext()
             }
-            
-            tableView.reloadRows(at: [indexPath], with: .automatic)
+            self.table_view.reloadRows(at: [indexPath], with: .automatic)
         }
     }
     
@@ -181,6 +181,8 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
     }
     
     @IBAction func refresh_button_pressed(_ sender: Any) {
+        self.generate_data(number: self.number_of_items)
+        self.attempt_fetch()
         self.table_view.reloadData()
     }
     
