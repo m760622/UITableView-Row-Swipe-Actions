@@ -54,6 +54,14 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let favorite = UIContextualAction(style: .normal, title: "Favorite") { (action, view, nil) in
             print("Favorite")
+            if let objects = self.controller.fetchedObjects, objects.count > 0 {
+                let item = objects[indexPath.row]
+                if item.is_favorite == false {
+                    item.is_favorite = true
+                }else{
+                    item.is_favorite = false
+                }
+            }
         }
         return UISwipeActionsConfiguration(actions: [favorite])
     }
@@ -61,6 +69,11 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, nil) in
             print("Delete")
+            if let objects = self.controller.fetchedObjects, objects.count > 0 {
+                let item = objects[indexPath.row]
+                context.delete(item)
+                app_delegate.saveContext()
+            }
         }
         return UISwipeActionsConfiguration(actions: [delete])
     }
