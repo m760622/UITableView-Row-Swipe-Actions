@@ -52,7 +52,7 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 60
     }
     
     func attempt_fetch() {
@@ -149,6 +149,7 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
             }else{
                 item.item_name = "Item_Number_\(i)"
             }
+            item.is_favorite = false
             app_delegate.saveContext()
         }
     }
