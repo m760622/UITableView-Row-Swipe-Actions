@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,20 +33,30 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item_Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyq-N8-6VB">
                                                     <rect key="frame" x="12.5" y="0.0" width="350" height="59.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="not-fav" translatesAutoresizingMaskIntoConstraints="NO" id="aBS-29-Ny7">
+                                                    <rect key="frame" x="322" y="11" width="38" height="38"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="aBS-29-Ny7" secondAttribute="height" multiplier="1:1" id="kj9-cR-eFs"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="aBS-29-Ny7" firstAttribute="top" secondItem="81W-O9-dDy" secondAttribute="topMargin" id="6q7-cA-gN3"/>
+                                                <constraint firstItem="aBS-29-Ny7" firstAttribute="bottom" secondItem="81W-O9-dDy" secondAttribute="bottomMargin" id="AV8-gc-8qK"/>
                                                 <constraint firstItem="fyq-N8-6VB" firstAttribute="centerX" secondItem="81W-O9-dDy" secondAttribute="centerX" id="BJX-3O-2EI"/>
                                                 <constraint firstItem="fyq-N8-6VB" firstAttribute="height" secondItem="81W-O9-dDy" secondAttribute="height" id="FjT-wt-pt6"/>
+                                                <constraint firstItem="aBS-29-Ny7" firstAttribute="trailing" secondItem="81W-O9-dDy" secondAttribute="trailingMargin" id="GFj-Ze-pg7"/>
                                                 <constraint firstItem="fyq-N8-6VB" firstAttribute="width" secondItem="81W-O9-dDy" secondAttribute="width" constant="-25" id="Qmk-fQ-Ycd"/>
                                                 <constraint firstItem="fyq-N8-6VB" firstAttribute="centerY" secondItem="81W-O9-dDy" secondAttribute="centerY" id="np9-Bh-X6U"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="item_name" destination="fyq-N8-6VB" id="rOi-Kn-awI"/>
+                                            <outlet property="star_image" destination="aBS-29-Ny7" id="poL-r6-fxN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -93,4 +105,7 @@
             <point key="canvasLocation" x="-404" y="34"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="not-fav" width="48" height="46"/>
+    </resources>
 </document>
