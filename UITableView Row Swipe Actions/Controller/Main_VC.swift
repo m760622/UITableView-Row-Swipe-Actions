@@ -63,6 +63,7 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
                 }
             }
         }
+        favorite.backgroundColor = UIColor(red:0.95, green:0.65, blue:0.21, alpha:1.00)
         return UISwipeActionsConfiguration(actions: [favorite])
     }
     
