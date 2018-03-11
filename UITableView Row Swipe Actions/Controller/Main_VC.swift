@@ -64,7 +64,9 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
             }
         }
         favorite.backgroundColor = UIColor(red:0.95, green:0.65, blue:0.21, alpha:1.00)
-        return UISwipeActionsConfiguration(actions: [favorite])
+        let config =  UISwipeActionsConfiguration(actions: [favorite])
+        config.performsFirstActionWithFullSwipe = false
+        return config
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -123,7 +125,7 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
             
         case.delete:
             if let indexPath = indexPath {
-                table_view.deleteRows(at: [indexPath], with: .fade)
+                table_view.deleteRows(at: [indexPath], with: .automatic)
             }
             break
             
