@@ -16,7 +16,7 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
         self.table_view.delegate = self
         self.table_view.dataSource = self
         
-        generate_data(number: 20)
+        generate_data(number: 5)
         
         attempt_fetch()
     }
@@ -62,6 +62,7 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
                     item.is_favorite = false
                 }
             }
+            self.table_view.isEditing = false
         }
         favorite.backgroundColor = UIColor(red:0.95, green:0.65, blue:0.21, alpha:1.00)
         let config =  UISwipeActionsConfiguration(actions: [favorite])
@@ -69,16 +70,33 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
         return config
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, nil) in
-            print("Delete")
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let delete = UIContextualAction(style: .normal, title: "Delete") { (action, view, nil) in
+//            print("Delete")
+//            self.table_view.isEditing = false
+//            if let objects = self.controller.fetchedObjects, objects.count > 0 {
+//                let item = objects[indexPath.row]
+//                context.delete(item)
+//                app_delegate.saveContext()
+//            }
+//        }
+//        delete.backgroundColor = .red
+//        let config =  UISwipeActionsConfiguration(actions: [delete])
+//        config.performsFirstActionWithFullSwipe = false
+//        return config
+//    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
             if let objects = self.controller.fetchedObjects, objects.count > 0 {
                 let item = objects[indexPath.row]
                 context.delete(item)
                 app_delegate.saveContext()
             }
+            
+            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
-        return UISwipeActionsConfiguration(actions: [delete])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -114,29 +132,27 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
-        switch(type){
-            
-        case.insert:
+        switch(type) {
+            case.insert:
             if let indexPath = newIndexPath {
                 table_view.insertRows(at: [indexPath], with: .fade)
             }
             break
             
-        case.delete:
+            case.delete:
             if let indexPath = indexPath {
                 table_view.deleteRows(at: [indexPath], with: .automatic)
             }
             break
             
-        case.update:
+            case.update:
             if let indexPath = indexPath {
                 let cell = table_view.cellForRow(at: indexPath) as! CustomCell
                 configure_cell(cell, indexPath: (indexPath as NSIndexPath) as IndexPath)
             }
             break
             
-        case.move:
+            case.move:
             if let indexPath = indexPath {
                 table_view.deleteRows(at: [indexPath], with: .fade)
             }
