@@ -164,7 +164,7 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
         }
         catch
         {
-            print ("There was an error")
+            print ("There was an ERROR when reseting the records.")
         }
     }
 }
