@@ -135,7 +135,7 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
         switch(type) {
             case.insert:
             if let indexPath = newIndexPath {
-                table_view.insertRows(at: [indexPath], with: .fade)
+                table_view.insertRows(at: [indexPath], with: .automatic)
             }
             break
             
@@ -154,30 +154,13 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
             
             case.move:
             if let indexPath = indexPath {
-                table_view.deleteRows(at: [indexPath], with: .fade)
+                table_view.deleteRows(at: [indexPath], with: .automatic)
             }
             if let indexPath = newIndexPath {
-                table_view.insertRows(at: [indexPath], with: .fade)
+                table_view.insertRows(at: [indexPath], with: .automatic)
             }
             break
         }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if let objects = controller.fetchedObjects, objects.count > 0 {
-//            let item = objects[indexPath.row]
-//            performSegue(withIdentifier: "to_Item_Details_VC", sender: item)
-//        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "to_Item_Details_VC" {
-//            if let destination = segue.destination as? Item_Details_VC {
-//                if let item = sender as? Item {
-//                    destination.item_to_see = item
-//                }
-//            }
-//        }
     }
     
     @IBAction func refresh_button_pressed(_ sender: Any) {
@@ -187,7 +170,10 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
     }
     
     func generate_data(number: Int) {
-        resetAllRecords(in: "Item")
+        self.attempt_fetch()
+        if let obj = controller.fetchedObjects, obj.count > 0 {
+            resetAllRecords()
+        }
         for i in 1...number{
             let item = Item(context: context)
             if i<10{
@@ -202,18 +188,12 @@ class Main_VC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
         }
     }
     
-    func resetAllRecords(in entity : String) {
-        let context = ( UIApplication.shared.delegate as! AppDelegate ).persistentContainer.viewContext
-        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
-        do
-        {
-            try context.execute(deleteRequest)
-            try context.save()
-        }
-        catch
-        {
-            print ("There was an ERROR when reseting the records.")
+    func resetAllRecords() {
+        let objects = self.controller.fetchedObjects
+        for i in 0..<objects!.count{
+            let item = objects![i]
+            context.delete(item)
+            app_delegate.saveContext()
         }
     }
 }
